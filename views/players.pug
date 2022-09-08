@@ -1,0 +1,15 @@
+extends layout
+include mixins/_playersRow
+
+block content
+    h1 Player Overview
+    table.ui.celled.table.center.aligned
+        thead
+            tr
+                th Player's name
+                th Server Name
+                th Actions
+        tbody
+            each player in players
+                +tableRow(player)
+            tr

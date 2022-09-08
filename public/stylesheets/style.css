@@ -1,0 +1,79 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.main-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+  height:100vh;
+}
+
+.main-screen a {
+  background-color: #0b0e0d;
+  border: 1px solid rgb(239, 240, 239);
+  color: white;
+  padding: 24px 24px 24px 30px;
+  cursor: pointer;
+  width: 50%;
+  max-width:300px;
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  text-align:center;
+}
+
+.btn-group a:not(:last-child) {
+  border-bottom: none;
+}
+
+.main-screen a:hover {
+  background-color: #0b6d11;
+  color: #ffffff;
+}
+
+.update {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.update:hover{
+  background-color: #4CAF50;
+}
+
+.delete {
+  background-color: white;
+  color: black;
+  border: 2px solid #f44336;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.delete:hover{
+  background-color: #bb1313;
+}

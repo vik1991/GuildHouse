@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  mysqldb:
+    container_name: "group_planner.db.${NODE_ENV}"
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    tty: true
+    expose:
+      - 3306
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+      SERVICE_NAME: mysql
+    volumes:
+      - db-config:/etc/mysql
+      - db-data:/var/lib/mysql
+      - ./db/backup/files/:/data_backup/data
+    networks:
+      - "group_planner-network"
+  app:
+    platform: linux/amd64
+    container_name: "group_planner.app.${NODE_ENV}"
+    depends_on:
+      - mysqldb
+    build: .
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $PORT:$PORT
+    environment:
+      - DB_HOST=mysqldb
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_NAME=$DB_DATABASE
+      - DB_PORT=$DB_PORT
+    stdin_open: true
+    tty: true
+
+# Docker Networks
+networks:
+  group_planner-network:
+    driver: bridge
+#volumes
+volumes:
+  db-config:
+  db-data:

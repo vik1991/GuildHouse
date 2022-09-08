@@ -1,0 +1,7 @@
+mixin tableRow(player)
+    tr
+        td #{player.player_name}
+        td #{player.server}
+        td
+            button(id=player.id, class="update") Update
+            button(id=player.id, class="delete") Delete
